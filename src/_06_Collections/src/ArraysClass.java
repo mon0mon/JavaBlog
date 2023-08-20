@@ -37,6 +37,34 @@ public class ArraysClass {
     }
 
     @Test
+    public void mismatch() {
+        int[] ary1 = new int[]{1, 2, 3, 4};
+        int[] ary2 = new int[]{1, 2, 3, 4};
+
+        //  [info] -1
+        log.info(String.valueOf(Arrays.mismatch(ary1, ary2)));
+        Assertions.assertEquals(-1, Arrays.mismatch(ary1, ary2));
+
+        ary2 = new int[]{1, 2, 3, 5};
+
+        //  [info] 4
+        log.info(String.valueOf(Arrays.mismatch(ary1, ary2)));
+        Assertions.assertEquals(4, Arrays.mismatch(ary1, ary2));
+
+        ary2 = new int[]{1, 2, 4, 5};
+
+        //  [info] 2
+        log.info(String.valueOf(Arrays.mismatch(ary1, ary2)));
+        Assertions.assertEquals(2, Arrays.mismatch(ary1, ary2));
+
+        ary2 = new int[]{2, 3, 4, 5};
+
+        //  [info] 0
+        log.info(String.valueOf(Arrays.mismatch(ary1, ary2)));
+        Assertions.assertEquals(0, Arrays.mismatch(ary1, ary2));
+    }
+
+    @Test
     public void indexSubList() {
         List<Integer> parentList = List.of(1, 2, 3, 4, 5);
         List<Integer> childList = List.of(2, 3, 4);
@@ -86,14 +114,18 @@ public class ArraysClass {
 
         Collections.rotate(list, -1);
 
+//        [info] [1, 2, 3, 4, 5, 0]
         log.info(list.toString());
 
         Collections.rotate(list, -1);
 
+//        [info] [2, 3, 4, 5, 0, 1]
         log.info(list.toString());
 
         Collections.rotate(list, 4);
 
+
+//        [info] [4, 5, 0, 1, 2, 3]
         log.info(list.toString());
     }
 
